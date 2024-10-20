@@ -1,0 +1,24 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<u><h2>Welcome to Our Fatmug Website</h2></u>
+<p>A team of dedicated entrepreneurs is transforming the industry through innovative ideas and strategic planning. By leveraging data and prioritizing quality, they strive for excellence and lasting impact.</p>
+
+<!-- Image Carousel -->
+<div class="image-carousel">
+    <div class="carousel-wrapper">
+        <img src="/static/images/bag1.jpeg" alt="Bag 1">
+        <img src="/static/images/bag2.jpeg" alt="Bag 2">
+        <img src="/static/images/bag3.jpeg" alt="Bag 3">
+        <img src="/static/images/bag4.jpeg" alt="Bag 4">
+        <img src="/static/images/bag5.jpeg" alt="Bag 5">
+        <!-- Duplicate the images to make the scrolling continuous -->
+        <img src="/static/images/bag1.jpeg" alt="Bag 1">
+        <img src="/static/images/bag2.jpeg" alt="Bag 2">
+        <img src="/static/images/bag3.jpeg" alt="Bag 3">
+        <img src="/static/images/bag4.jpeg" alt="Bag 4">
+        <img src="/static/images/bag5.jpeg" alt="Bag 5">
+    </div>
+</div> 
+{% endblock %}

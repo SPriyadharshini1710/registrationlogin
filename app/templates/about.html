@@ -1,0 +1,136 @@
+<!-- templates/home.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="about-container">
+    <!-- Image on top -->
+    <div class="image-container">
+        <img src="{% static 'images/about1.jpeg' %}" alt="About Us Banner" class="about-banner">
+    </div>
+
+    <h1 class="about-heading">About Us</h1>
+
+    <section class="section">
+        <h2 class="section-title">Team Fatmug</h2>
+        <p class="section-content">As a bunch of dynamic explorers, we merge diverse backgrounds on our entrepreneurial journey. Fueled by a dedication to excellence, we leverage our expertise to elevate industry standards, cherishing integrity and innovation. With unwavering commitment, we are forging Fatmug as an emerging brand with aspirations for a lasting legacy. Through strategic planning and effective team leadership, we envision a transformed industry landscape, poised for greater prosperity.</p>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Our Values</h2>
+
+        <div class="value-section">
+            <h3 class="value-title">Mission</h3>
+            <p class="section-content">At Fatmug Bags, we're dedicated to providing top-quality bags that effortlessly combine style, durability, and practicality, ensuring our customers are equipped for any adventure.</p>
+        </div>
+
+        <div class="value-section">
+            <h3 class="value-title">Vision</h3>
+            <p class="section-content">In envisioning Fatmug, we see a future where our brand stands as a beacon of innovation, offering a diverse range of sophisticated solutions that seamlessly blend style, resilience, and functionality.</p>
+        </div>
+
+        <div class="value-section">
+            <h3 class="value-title">Culture</h3>
+            <p class="section-content">We prioritize quality, ensuring our products serve as dependable companions for diverse lifestyles. Inclusivity shapes our culture, fostering a community where all are valued and respected.</p>
+        </div>
+    </section>
+</div>
+
+<style>
+    /* Image container */
+    .image-container {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    /* About banner image styling */
+    .about-banner {
+        width: 100%; /* Adjusts the image to fit its container */
+        max-width: 1200px; /* Ensures the image doesn't exceed 1200px */
+        height: auto; /* Maintains aspect ratio */
+        border-radius: 5px; /* Optional: Adds a border radius */
+    }
+</style>
+
+<style>
+    /* Main container */
+    .about-container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 120px;
+        background-color: #f9f9f9;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    {% comment %} /* Image container */
+    .image-container {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .about-banner {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+    } {% endcomment %}
+
+    /* Heading styles */
+    .about-heading {
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    /* Section styles */
+    .section {
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        font-size: 28px;
+        margin-bottom: 15px;
+        color: #CC0000;
+        text-decoration: underline;
+    }
+
+    .section-content {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    /* Values section */
+    .value-section {
+        margin-top: 30px;
+    }
+
+    .value-title {
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .about-container {
+            width: 90%;
+            padding: 20px;
+        }
+
+        .about-heading {
+            font-size: 28px;
+        }
+
+        .section-title {
+            font-size: 24px;
+        }
+
+        .value-title {
+            font-size: 20px;
+        }
+    }
+</style>
+
+{% endblock %}

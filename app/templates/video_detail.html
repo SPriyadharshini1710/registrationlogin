@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="video-page">
+    <div class="main-video">
+        <h2>{{ video.title }}</h2>
+        <video id="main-video" width="100%" controls autoplay>
+            <source src="{{ video.video.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p>{{ video.description }}</p>
+    </div>
+
+    <div class="sidebar">
+        <h3>Other Videos</h3>
+        <ul class="other-videos-list">
+            {% for other_video in other_videos %}
+            <li>
+                <a href="{% url 'video_detail' other_video.id %}">
+                    <video width="100%">
+                        <source src="{{ other_video.video.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <strong>{{ other_video.title }}</strong>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const video = document.getElementById('main-video');
+        const videoId = "{{ video.id }}";  // Store the video ID for unique storage
+
+        // Retrieve the last played time from localStorage
+        const lastPlayedTime = localStorage.getItem('video-' + videoId);
+
+        // Set the video time to the last played time (if available)
+        if (lastPlayedTime) {
+            video.currentTime = parseFloat(lastPlayedTime);
+        }
+
+        // Save the current video time on pause or when the user leaves the page
+        video.addEventListener('pause', function() {
+            localStorage.setItem('video-' + videoId, video.currentTime);
+        });
+
+        // Save the time when the page is unloaded (in case the user exits)
+        window.addEventListener('beforeunload', function() {
+            localStorage.setItem('video-' + videoId, video.currentTime);
+        });
+    });
+</script>
+
+<style>
+    .video-page {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .main-video {
+        width: 70%; /* Main video occupies 70% of the page */
+    }
+
+    .sidebar {
+        width: 25%;
+        padding-left: 20px;
+    }
+
+    .sidebar h3 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .other-videos-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .other-videos-list li {
+        margin-bottom: 15px;
+    }
+
+    .other-videos-list video {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .other-videos-list strong {
+        font-size: 14px;
+        color: #333;
+    }
+
+    .other-videos-list a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    .other-videos-list a:hover {
+        color: #007bff;
+    }
+</style>
+
+{% endblock %}

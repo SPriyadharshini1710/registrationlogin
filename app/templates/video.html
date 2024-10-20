@@ -1,0 +1,150 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="ccontainer">
+    <div class="header-container">
+        <h2 class="inline-heading">UPLOADED VIDEOS</h2>
+        
+        <!-- Sorting Links -->
+        <div class="sort-options">
+            <a href="?sort=title&order={% if current_order == 'asc' and current_sort == 'title' %}desc{% else %}asc{% endif %}">
+                 {% if current_order == 'asc' and current_sort == 'title' %}↑{% else %}↓{% endif %}
+            </a>
+            <a href="?sort=uploaded_at&order={% if current_order == 'asc' and current_sort == 'uploaded_at' %}desc{% else %}asc{% endif %}">
+                {% if current_order == 'asc' and current_sort == 'uploaded_at' %}↑{% else %}↓{% endif %}
+            </a>
+            
+        </div>
+    
+        <div class="upload-link inline-button">
+            
+            <a href="{% url 'upload_video' %}" class="btn-upload"><b>UPLOAD VIDEO</b></a>
+        </div>
+    </div>
+    
+    
+    <!-- Video list -->
+    <div class="video-grid">
+        {% for video in videos %}
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <a href="{% url 'video_detail' video.id %}">
+                        <video width="100%" controls>
+                            <source src="{{ video.video.url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </a>
+                </div>
+                <div class="video-info">
+                    <strong>{{ video.title }}</strong>
+                    <p>{{ video.description }}</p>
+                </div>
+            </div>
+        {% empty %}
+            <p>No videos available.</p>
+        {% endfor %}
+    </div>
+    
+</div>
+
+<style>
+    .ccontainer {
+        width: 90%;
+        margin: 0 auto;
+        padding: 50px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+    /* Container for heading and button */
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 10px 0;
+    }
+
+    /* Inline heading style */
+    .inline-heading {
+        margin: 0;
+        font-size: 24px;
+        color: #333;
+    }
+
+    /* Upload button alignment and styling */
+    .upload-link {
+        text-align: right;
+    }
+
+    .btn-upload {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .btn-upload:hover {
+        background-color: #CC0000;
+    }
+
+    /* Video grid styling */
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    /* Video card and video element styling */
+    .video-card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.2s ease;
+        padding: 10px; /* Added padding */
+        margin: 10px 0; /* Added margin */
+    }
+
+    .video-card:hover {
+        transform: scale(1.02);
+    }
+
+    .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+    }
+
+    .video-wrapper video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none; /* Remove border */
+    }
+
+    /* Video info section */
+    .video-info {
+        padding: 10px;
+        text-align: left;
+    }
+
+    .video-info strong {
+        font-size: 16px;
+        color: #333;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .video-info p {
+        font-size: 14px;
+        color: #666;
+    }
+</style>
+
+{% endblock %}

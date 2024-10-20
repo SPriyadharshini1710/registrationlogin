@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        /* Font family specifically for the navbar */
+        nav {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            padding: 8px 16px;
+        }
+
+        nav ul li a:hover {
+            color: #ccc;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            border-top: 1px solid #ccc;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .image-carousel {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .carousel-wrapper {
+            display: flex;
+            width: max-content; /* Ensure the width adjusts dynamically based on content */
+            animation: scroll 20s linear infinite;
+        }
+        
+        .carousel-wrapper img {
+            width: 300px; /* Adjust the width to your preference */
+            height: auto;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
